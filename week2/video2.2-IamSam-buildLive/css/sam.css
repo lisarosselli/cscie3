@@ -1,0 +1,17 @@
+
+.samtext{
+    color: #565350;
+    font-family: "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+}
+
+#whatsnext {
+  display: none;
+}
+
+.button {
+  background-color: yellow;
+  cursor: pointer;
+  padding: 10px;
+  text-index: 0;
+  width: 30%;
+}
