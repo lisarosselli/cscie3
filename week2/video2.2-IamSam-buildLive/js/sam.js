@@ -4,8 +4,21 @@
 var myButton = document.getElementById('whatsnextbutton');
 
 myButton.onclick = function() {
-  console.log('in onclick function');
   var myDiv = document.getElementById('whatsnext');
-  myDiv.style.display = 'block';
+  
+  /*
+  if (myDiv.style.display == '') {
+    myDiv.style.display = 'block';
+  } else {
+    myDiv.style.display = '';
+  }
+  */
+  
+  // learned that css-wise display: none; 
+  // is literally an empty string
+  
+  // this toggles the image on and off
+  myDiv.style.display = (myDiv.style.display == '') ? 'block' : '';
+  
 }
 
