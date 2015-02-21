@@ -18,16 +18,29 @@ var getFibSum = document.getElementById("sumFib");
 
 //then we set the event handler for when the button is clicked
 getFibSum.onclick = function(){
-               document.getElementById("sumFibResult").innerHTML = twelveEvenFibonacciSum();
- }
+  document.getElementById("sumFibResult").innerHTML = "<b>" + twelveEvenFibonacciSum() + "</b>";
+}
 
- /*
-  *  twelveEvenFibonacciSum - calulates the sum of the first 12 even fibonacci numbers, with 0, 1 being the first two numbers of the sequence
-  *
-  *            @returns {integer} The sum of the first 12 even Fibonacci numbers
-  */
+// 0, 1, 1, 2, 3, 5, 8, 13, 21...
+function twelveEvenFibonacciSum(){
 
- function twelveEvenFibonacciSum(){
- /// WRITE YOUR CODE HERE
+  var acc = 0;
+  var numsAdded = 0;
+  var fibSeq = [0, 1];
+  
+  do {    
+    var newNum = fibSeq[fibSeq.length-1] + fibSeq[fibSeq.length-2];
+    fibSeq.push(newNum);
+      
+    // if the new number is even, add it up
+    if ((newNum % 2) == 0) {
+      acc += newNum;
+      numsAdded++;
+      console.log("adding "+newNum)
+    }
+  } while(numsAdded < 11); // 0 is the "first" even number added
 
- }
+  console.log(fibSeq);
+
+  return acc;
+}
