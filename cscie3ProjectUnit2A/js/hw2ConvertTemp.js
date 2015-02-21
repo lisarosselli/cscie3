@@ -17,14 +17,18 @@
 
  var convertCtoF = document.getElementById("degC");
  convertCtoF.onchange = function(){  //onchange means that every time the value in the input box changes, this function will run
-                var degreesC = document.getElementById("degC").value; // this is the value from the form field
-
-                // your calculations go here. You'll start with the variable degreesC, convert it to Fahrenheit
-                //  and place the result in the variable 'degreesF'
-                var degreesF = "you haven't written this code yet"; // you will set this to the results of your conversion
+                var degreesC = document.getElementById("degC").value; 
+                var degreesF;
+                
+                //°C x 9/5 + 32 = °F
+                degreesC = Number.parseInt(degreesC);
+                if (!isNaN(degreesC)) {
+                  degreesF = ((degreesC * (9/5)) + 32);
+                  degreesF = Number.parseInt(degreesF);
+                }
 
                 // now we write the result to the page
-                document.getElementById("degFOut").innerHTML = degreesF;
+                document.getElementById("degFOut").innerHTML = "<b>"+degreesF+"</b>";
  }
 
  var convertFtoC = document.getElementById("degF");
