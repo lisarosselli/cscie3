@@ -34,12 +34,15 @@
  var convertFtoC = document.getElementById("degF");
  convertFtoC.onchange = function(){  //onchange means that every time the value in the input box changes, this function will run
                 var degreesF = document.getElementById("degF").value; // this is the value from the form field
-
-                // your calculations go here. You'll start with the variable degreesF, convert it to Celsius
-                //  and place the result in the variable 'degreesC'
-                var degreesC = "you haven't written this code yet"; // you will set this to the results of your conversion
-
+                var degreesC;
+                
+                //(°F - 32) x 5/9 = °C
+                degreesF = Number.parseInt(degreesF);
+                if (!isNaN(degreesF)) {
+                  degreesC = ((degreesF - 32) * (5/9));
+                  degreesC = Number.parseInt(degreesC);
+                }
 
                 // now we write the result to the page
-                document.getElementById("degCOut").innerHTML = degreesC;
+                document.getElementById("degCOut").innerHTML = "<b>" + degreesC + "</b>";
  }
