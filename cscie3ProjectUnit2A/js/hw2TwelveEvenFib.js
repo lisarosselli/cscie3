@@ -25,7 +25,7 @@ getFibSum.onclick = function(){
 function twelveEvenFibonacciSum(){
 
   var acc = 0;
-  var numsAdded = 0;
+  var numsAdded = 1; // counting 0 already here
   var fibSeq = [0, 1];
   
   do {    
@@ -36,11 +36,11 @@ function twelveEvenFibonacciSum(){
     if ((newNum % 2) == 0) {
       acc += newNum;
       numsAdded++;
-      console.log("adding "+newNum)
+      //console.log("adding "+newNum+"  sum "+acc);
     }
-  } while(numsAdded < 11); // 0 is the "first" even number added
+  } while(numsAdded < 12);
 
-  console.log(fibSeq);
+  //console.log(fibSeq);
 
   return acc;
 }
