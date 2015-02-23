@@ -50,7 +50,32 @@
  *
  **/
 function makeBlue(original, output){
-      // YOUR CODE GOES HERE
+  
+  
+  console.log(original.length);
+  console.log(typeof output);
+  // r, g, b, a, r, g, b, a, r, g, b, a
+  // 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+  // blue: 2, 6, 10, every 4th starting at 2
+  
+  for (var i = 0; i < original.length; i+=4) {
+    
+    var pixel = [
+      original[i],
+      original[i+1],
+      original[i+2],
+      original[i+3]
+    ];
+    
+    pixel[0] *= 0.2;
+    pixel[1] *= 0.2;
+    pixel[2] *= 2;
+    
+    output[i] = pixel[0];
+    output[i+1] = pixel[1];
+    output[i+2] = pixel[2];
+    output[i+3] = pixel[3];
+  }
 }
 
 /*
@@ -64,7 +89,24 @@ function makeBlue(original, output){
  *
  **/
 function makeReverse(original, output){
-      // YOUR CODE GOES HERE
+  
+  for (var i = 0; i < original.length; i+=4) {
+    var pixel = [
+      original[i],
+      original[i+1],
+      original[i+2],
+      original[i+3]
+    ];
+  
+    pixel[0] = 255 - pixel[0];
+    pixel[1] = 255 - pixel[1];
+    pixel[2] = 255 - pixel[2];
+  
+    output[i] = pixel[0];
+    output[i+1] = pixel[1];
+    output[i+2] = pixel[2];
+    output[i+3] = pixel[3];
+  }
 }
 
 /*
