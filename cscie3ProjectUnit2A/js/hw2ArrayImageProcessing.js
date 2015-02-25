@@ -37,8 +37,6 @@
   *
   ********************************************************************/
 
-
-
 /*
  * makeBlue - Reads data from an image bitmap array and writes new image data to a another array object
  *            The output data contains only blue pixel data, with other color values removed (set to 0).
@@ -121,7 +119,24 @@ function makeReverse(original, output){
  **/
 
 function makeTransparent(original,output){
-      // YOUR CODE GOES HERE
+  
+  for (var i = 0; i < original.length; i+=4) {
+  
+    var pixel = [
+      original[i],
+      original[i+1],
+      original[i+2],
+      original[i+3]
+    ];
+
+    pixel[3] = 100;
+
+    output[i] = pixel[0];
+    output[i+1] = pixel[1];
+    output[i+2] = pixel[2];
+    output[i+3] = pixel[3];
+  }
+
 }
 
 /*
