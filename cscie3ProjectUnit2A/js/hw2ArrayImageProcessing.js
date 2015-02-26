@@ -138,12 +138,22 @@ function makeTransparent(original,output){
  *
  **/
 function loadComposite(original, secondOne, output){
-       // YOUR CODE GOES HERE
+  for (var i = 0; i < original.length; i+=4) {
+    
+    var oPixel = [];
+    var sPixel = [];
+    
+    for (var n = 0; n < 4; n++) {
+      oPixel[n] = original[i+n];
+      sPixel[n] = secondOne[i+n];
+      output[i+n] = oPixel[n] + sPixel[n];
+    }
+  }
 }
 
 
 /* 
- * Helper functions, called above.
+ * Helper functions, called from above.
  */
 function blueTint(value, index, array) {
   if (index === 2) {
