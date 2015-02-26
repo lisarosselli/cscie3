@@ -49,7 +49,6 @@
  **/
 function makeBlue(original, output){
   for (var i = 0; i < original.length; i+=4) {
-    
     var pixel = [
       original[i],
       original[i+1],
@@ -106,7 +105,6 @@ function makeReverse(original, output){
 
 function makeTransparent(original,output){
   for (var i = 0; i < original.length; i+=4) {
-  
     var pixel = [
       original[i],
       original[i+1],
@@ -148,16 +146,10 @@ function loadComposite(original, secondOne, output){
  * Helper functions, called above.
  */
 function blueTint(value, index, array) {
-  switch(index) {
-    case 2:
-      array[index] = value * 2;
-      break;
-    case 3:
-      // do nothing
-      break;
-    default:
-      array[index] = value * 0.2;
-      break;
+  if (index === 2) {
+    array[index] = value * 2;
+  } else if (index === 0 || index === 1) {
+    array[index] = value * 0.2;
   }
 }
 
