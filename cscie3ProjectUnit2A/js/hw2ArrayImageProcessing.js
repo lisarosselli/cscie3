@@ -112,7 +112,8 @@ function makeTransparent(original,output){
       original[i+3]
     ];
 
-    pixel.forEach(transparent);
+    //pixel.forEach(transparent); //overkill?
+    pixel[3] = 100;
     
     for (var a = 0; a < 4; a++) {
       output[i+a] = pixel[a];

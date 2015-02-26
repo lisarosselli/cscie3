@@ -15,21 +15,23 @@
   *
   ********************************************************************/
 
- var convertCtoF = document.getElementById("degC");
- convertCtoF.onchange = function(){  //onchange means that every time the value in the input box changes, this function will run
-                var degreesC = document.getElementById("degC").value; 
-                var degreesF;
-                
-                //°C x 9/5 + 32 = °F
-                degreesC = Number.parseInt(degreesC);
-                if (!isNaN(degreesC)) {
-                  degreesF = ((degreesC * (9/5)) + 32);
-                  degreesF = Number.parseInt(degreesF);
-                }
 
-                // now we write the result to the page
-                document.getElementById("degFOut").innerHTML = "<b>"+degreesF+"</b>";
- }
+var convertCtoF = document.getElementById("degC");
+convertCtoF.onchange = function(){ 
+  var degreesC = document.getElementById("degC").value; 
+  //chai.assert.isUndefined(degreesC, "No celcius defined.");
+  var degreesF;
+  
+  if (degreesC && !isNaN(Number.parseInt(degreesC))) {
+    degreesC = Number.parseInt(degreesC);
+    //chai.expect(degreesC).to.be.a('number');
+    degreesF = ((degreesC * (9/5)) + 32);
+    //chai.expect(degreesF).to.be.a('number');
+    degreesF = Number.parseInt(degreesF);
+    
+    document.getElementById("degFOut").innerHTML = "<b>"+degreesF+"</b>";
+  }
+}
 
  var convertFtoC = document.getElementById("degF");
  convertFtoC.onchange = function(){  //onchange means that every time the value in the input box changes, this function will run
