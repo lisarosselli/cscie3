@@ -48,14 +48,6 @@
  *
  **/
 function makeBlue(original, output){
-  
-  
-  console.log(original.length);
-  console.log(typeof output);
-  // r, g, b, a, r, g, b, a, r, g, b, a
-  // 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
-  // blue: 2, 6, 10, every 4th starting at 2
-  
   for (var i = 0; i < original.length; i+=4) {
     
     var pixel = [
@@ -65,14 +57,11 @@ function makeBlue(original, output){
       original[i+3]
     ];
     
-    pixel[0] *= 0.2;
-    pixel[1] *= 0.2;
-    pixel[2] *= 2;
+    pixel.forEach(blueTint);
     
-    output[i] = pixel[0];
-    output[i+1] = pixel[1];
-    output[i+2] = pixel[2];
-    output[i+3] = pixel[3];
+    for (var a = 0; a < 4; a++) {
+      output[i+a] = pixel[a];
+    }
   }
 }
 
@@ -87,7 +76,6 @@ function makeBlue(original, output){
  *
  **/
 function makeReverse(original, output){
-  
   for (var i = 0; i < original.length; i+=4) {
     var pixel = [
       original[i],
@@ -95,17 +83,15 @@ function makeReverse(original, output){
       original[i+2],
       original[i+3]
     ];
-  
-    pixel[0] = 255 - pixel[0];
-    pixel[1] = 255 - pixel[1];
-    pixel[2] = 255 - pixel[2];
-  
-    output[i] = pixel[0];
-    output[i+1] = pixel[1];
-    output[i+2] = pixel[2];
-    output[i+3] = pixel[3];
+
+    pixel.forEach(inverse);
+
+    for (var a = 0; a < 4; a++) {
+      output[i+a] = pixel[a];
+    }
   }
 }
+
 
 /*
  * makeTransparent - Reads data from an image bitmap array and writes new image data to another array object
@@ -119,7 +105,6 @@ function makeReverse(original, output){
  **/
 
 function makeTransparent(original,output){
-  
   for (var i = 0; i < original.length; i+=4) {
   
     var pixel = [
@@ -129,15 +114,14 @@ function makeTransparent(original,output){
       original[i+3]
     ];
 
-    pixel[3] = 100;
-
-    output[i] = pixel[0];
-    output[i+1] = pixel[1];
-    output[i+2] = pixel[2];
-    output[i+3] = pixel[3];
+    pixel.forEach(transparent);
+    
+    for (var a = 0; a < 4; a++) {
+      output[i+a] = pixel[a];
+    };
   }
-
 }
+
 
 /*
  * loadComposite - Reads data from two image bitmap arrays (one a photo, and one a text overlay)
@@ -157,4 +141,34 @@ function makeTransparent(original,output){
  **/
 function loadComposite(original, secondOne, output){
        // YOUR CODE GOES HERE
+}
+
+
+/* 
+ * Helper functions, called above.
+ */
+function blueTint(value, index, array) {
+  switch(index) {
+    case 2:
+      array[index] = value * 2;
+      break;
+    case 3:
+      // do nothing
+      break;
+    default:
+      array[index] = value * 0.2;
+      break;
+  }
+}
+
+function inverse(value, index, array) {
+  if (index < 3) {
+    array[index] = (255 - value);
+  }
+}
+
+function transparent(value, index, array) {
+  if (index === 3) {
+    array[index] = 100;
+  }
 }
