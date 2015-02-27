@@ -32,7 +32,7 @@ splitName.onclick = function(){
     /* if user does not enter a space at all (i.e. only first name)
      * indexOf will return -1
      */
-    var spaceIndex = (userName.indexOf(" ") == -1) ? userName.length : userName.indexOf(" "); 
+    var spaceIndex = (userName.indexOf(" ") == -1) ? userName.length : userName.indexOf(" ");     
     var firstname = userName.slice(0, spaceIndex);
     var lastname = userName.slice(spaceIndex+1, userName.length);
 

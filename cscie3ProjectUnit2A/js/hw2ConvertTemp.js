@@ -16,21 +16,19 @@
   ********************************************************************/
 
 
+function cToF(celcius) {
+  var celcius = Number.parseFloat(celcius);
+  if (!isNaN(celcius)) {
+    return (celcius * (9/5)) + 32;
+  }
+  return false;
+}
+
 var convertCtoF = document.getElementById("degC");
 convertCtoF.onchange = function(){ 
   var degreesC = document.getElementById("degC").value; 
-  //chai.assert.isUndefined(degreesC, "No celcius defined.");
-  var degreesF;
-  
-  if (degreesC && !isNaN(Number.parseInt(degreesC))) {
-    degreesC = Number.parseInt(degreesC);
-    //chai.expect(degreesC).to.be.a('number');
-    degreesF = ((degreesC * (9/5)) + 32);
-    //chai.expect(degreesF).to.be.a('number');
-    degreesF = Number.parseInt(degreesF);
-    
-    document.getElementById("degFOut").innerHTML = "<b>"+degreesF+"</b>";
-  }
+  var degreesF = cToF(degreesC);
+  document.getElementById("degFOut").innerHTML = "<b>"+degreesF+"</b>";
 }
 
  var convertFtoC = document.getElementById("degF");
@@ -48,3 +46,10 @@ convertCtoF.onchange = function(){
                 // now we write the result to the page
                 document.getElementById("degCOut").innerHTML = "<b>" + degreesC + "</b>";
  }
+
+// Attempting to run some unit tests with my own homegrown code. 
+Truffle.setLogLevel(1);
+Truffle.assert(cToF("m") === false, "'m' yields false from cToF");
+Truffle.assert(!isNaN(cToF("3")), "'3' yields a number output from cToF");
+Truffle.assert(!isNaN(cToF("5.2")), "'5.2' yields a number output from cToF");
+Truffle.assert(cToF(true) === false, "true yields false output from cToF");
