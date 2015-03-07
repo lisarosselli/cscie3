@@ -1,0 +1,51 @@
+* {
+  margin:0;
+  padding:0;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  color: #555;
+  font-weight: 200;
+}
+
+h1 {
+  border-bottom: 1px solid #ccc;
+}
+
+.mainContainer {
+  float:left;
+  padding: 2.5em;
+  width: 42%;
+}
+
+.formContent {
+  padding-top: 2em;
+}
+
+table {
+  width: 100%;
+}
+
+.tdTight {
+  width: 25%;
+}
+
+td {
+  width: auto;
+}
+
+input {
+  font-size: 1em;
+  font-weight: 300;
+  width: 100%;
+}
+
+.fa {
+  cursor: pointer;
+}
+
+button {
+  font-size: 1em;
+  width: 10em;
+  height: 3em;
+  color: green;
+  margin-top: 2em;
+}
