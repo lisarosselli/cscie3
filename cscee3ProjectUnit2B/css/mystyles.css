@@ -49,3 +49,7 @@ button {
   color: green;
   margin-top: 2em;
 }
+
+.errInput {
+  outline: 1px solid red;
+}

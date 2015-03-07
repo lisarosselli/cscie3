@@ -21,6 +21,9 @@ function initRatingsStars() {
 
 function saveTitle() {
   console.log(bookApp.titleInput.value);
+  var titleText = bookApp.titleInput.value;  
+  bookApp.titleInput.className = (!bookApp.disallowChars.test(titleText)) ? "errInput" : "";
+
 }
 
 function saveAuthor() {
