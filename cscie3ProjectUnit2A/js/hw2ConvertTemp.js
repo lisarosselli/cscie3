@@ -28,9 +28,10 @@ function cToF(celcius) {
 }
 
 var convertCtoF = document.getElementById("degC");
-convertCtoF.onchange = function(){ 
+convertCtoF.onkeyup = function(){ 
   var degreesC = document.getElementById("degC").value; 
   var degreesF = cToF(degreesC);
+  degreesF = (!degreesF) ? "" : degreesF;
   document.getElementById("degFOut").innerHTML = "<b>"+degreesF+"</b>";
 }
 
@@ -49,9 +50,10 @@ function fToC(fahrenheit) {
 }
 
 var convertFtoC = document.getElementById("degF");
-convertFtoC.onchange = function(){ 
+convertFtoC.onkeyup = function(){ 
   var degreesF = document.getElementById("degF").value;
   var degreesC = fToC(degreesF);
+  degreesC = (!degreesC) ? "" : degreesC;
   document.getElementById("degCOut").innerHTML = "<b>"+degreesC+"</b>"
  }
 
