@@ -67,3 +67,6 @@ Truffle.assert(fToC("h") === false, "'h' yields false from fToC");
 Truffle.assert(!isNaN(fToC("75")), '75 yields a number output from fToC');
 Truffle.assert(!isNaN(fToC('55.5')), '55.5 yields a number output from fToC');
 Truffle.assert(fToC(true) === false, "true yields false output from fToC");
+
+
+
