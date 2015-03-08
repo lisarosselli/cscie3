@@ -7,11 +7,18 @@
  */
 
 var bookApp = {
-  disallowChars: /^[^<>*$#@+=%\[\]\"\{\}\\\/\^]*$/,
+  disallowTitleChars: /^[^<>*$#@|~`+=%\[\]\"\{\}\\\/\^]*$/,
+  disallowAuthorChars: /^[^<>!@#$%&*|()+=%\[\]\"\'?.,~`\{\}\\\/\^0-9]*$/,
   titleInput: document.getElementById('title'),
   authorInput: document.getElementById('author'),
   yearInput: document.getElementById('publishedYear'),
-  rating: null
+  rating: null,
+  pendingEntry: {
+    title: undefined,
+    author: '',
+    year: '',
+    rating: null
+  }
 };
 
 
@@ -19,10 +26,18 @@ function initRatingsStars() {
   
 }
 
-function saveTitle() {
+function validateTitle() {
   console.log(bookApp.titleInput.value);
-  var titleText = bookApp.titleInput.value;  
-  bookApp.titleInput.className = (!bookApp.disallowChars.test(titleText)) ? "errInput" : "";
+  var tInput = bookApp.titleInput;
+  var tText = bookApp.titleInput.value;  
+
+  if (!bookApp.disallowTitleChars.test(tText)) {
+    tInput.className = 'errInput';
+    bookApp.pendingEntry.title = undefined;
+  } else {
+    tInput.className = '';
+    bookApp.pendingEntry.title = tText;
+  }
 
 }
 
@@ -34,13 +49,9 @@ function saveYear() {
   console.log(bookApp.yearInput.value);
 }
 
-function init() {
-  bookApp.titleInput.onchange = saveTitle;
+(function init() {
+  console.log("initializing function?");
+  bookApp.titleInput.onchange = validateTitle;
   bookApp.authorInput.onchange = saveAuthor;
   bookApp.yearInput.onchange = saveYear;
-}
-
-(function() {
-  console.log("initializing function?");
-  init();
 })();
