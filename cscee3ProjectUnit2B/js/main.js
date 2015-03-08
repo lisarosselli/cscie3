@@ -6,19 +6,14 @@
  * https://www.debuggex.com/r/zY3mFptK8rBe9xYg
  */
 
-var bookApp = {
+var app = {
   disallowTitleChars: /^[^<>*$#@|~`+=%\[\]\"\{\}\\\/\^]*$/,
-  disallowAuthorChars: /^[^<>!@#$%&*|()+=%\[\]\"\'?.,~`\{\}\\\/\^0-9]*$/,
+  disallowAuthorChars: /^[^<>!@#$%&*|()+=%\[\]\"\'?,~`\{\}\\\/\^0-9]*$/,
   titleInput: document.getElementById('title'),
   authorInput: document.getElementById('author'),
   yearInput: document.getElementById('publishedYear'),
   rating: null,
-  pendingEntry: {
-    title: undefined,
-    author: '',
-    year: '',
-    rating: null
-  }
+  pendingEntry: null
 };
 
 
@@ -27,31 +22,42 @@ function initRatingsStars() {
 }
 
 function validateTitle() {
-  console.log(bookApp.titleInput.value);
-  var tInput = bookApp.titleInput;
-  var tText = bookApp.titleInput.value;  
+  console.log(app.titleInput.value);
+  var tInput = app.titleInput;
+  var tText = app.titleInput.value;  
 
-  if (!bookApp.disallowTitleChars.test(tText)) {
+  if (!app.disallowTitleChars.test(tText)) {
     tInput.className = 'errInput';
-    bookApp.pendingEntry.title = undefined;
   } else {
     tInput.className = '';
-    bookApp.pendingEntry.title = tText;
+    app.pendingEntry.setProperty("title", tText);//title = tText;
   }
 
 }
 
 function saveAuthor() {
-  console.log(bookApp.authorInput.value);
+  console.log(app.authorInput.value);
+  var aInput = app.authorInput;
+  var aText = app.authorInput.value;
+  
+  if (!app.disallowAuthorChars.test(aText)) {
+    aInput.className = 'errInput';
+  } else {
+    aInput.className = '';
+    app.pendingEntry.setProperty("author", aText);
+  }
 }
 
 function saveYear() {
-  console.log(bookApp.yearInput.value);
+  console.log(app.yearInput.value);
 }
 
 (function init() {
-  console.log("initializing function?");
-  bookApp.titleInput.onchange = validateTitle;
-  bookApp.authorInput.onchange = saveAuthor;
-  bookApp.yearInput.onchange = saveYear;
+  console.log("init");
+  
+  app.titleInput.onchange = validateTitle;
+  app.authorInput.onchange = saveAuthor;
+  app.yearInput.onchange = saveYear;
+  
+  app.pendingEntry = Book;
 })();
