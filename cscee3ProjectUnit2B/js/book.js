@@ -1,5 +1,5 @@
 var Book = (function () {
-  var _title = "Harry Potter";
+  var _title = 'Harry Potter';
   var _author;
   var _yearPublished;
   var _rating;
@@ -7,16 +7,16 @@ var Book = (function () {
   var setProperty = function(prop, value) {
     if (typeof prop === 'string') {
       switch(prop) {
-        case "title":
+        case 'title':
           _title = value;
           break;
-        case "author":
+        case 'author':
           _author = value;
           break;
-        case "yearPublished":
+        case 'yearPublished':
           _yearPublished = value;
           break;
-        case "rating":
+        case 'rating':
           _rating = value;
           break;
       }
