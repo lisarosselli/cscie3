@@ -12,13 +12,28 @@ var app = {
   titleInput: document.getElementById('title'),
   authorInput: document.getElementById('author'),
   yearInput: document.getElementById('publishedYear'),
+  saveBtn: document.getElementById('saveBtn');
+  star0: document.getElementById('s0'),
+  star1: document.getElementById('s1'),
+  star2: document.getElementById('s2'),
+  star3: document.getElementById('s3'),
+  star4: document.getElementById('s4'),
+  stars: ['s0', 's1', 's2', 's3', 's4'],
   rating: null,
   pendingEntry: null
 };
 
 
-function initRatingsStars() {
-  
+function ratingsStars(event) {
+  var starNumber = parseInt(event.target.id.substr(1, 1));
+  for (var i = 0; i < app.stars.length; i++) {
+    var htmlElement = document.getElementById(app.stars[i]);
+    if (i <= starNumber) {
+      htmlElement.className = 'fa fa-star';
+    } else {
+      htmlElement.className = 'fa fa-star-o';
+    }
+  }
 }
 
 function validateTitle() {
@@ -66,12 +81,23 @@ function validateYear() {
   }
 }
 
+function validateAll() {
+  
+}
+
 (function init() {
   console.log("init");
   
   app.titleInput.onchange = validateTitle;
   app.authorInput.onchange = validateAuthor;
   app.yearInput.onchange = validateYear;
+  app.saveBtn.onclick = validateAll;
+  
+  app.star0.onclick = ratingsStars;
+  app.star1.onclick = ratingsStars;
+  app.star2.onclick = ratingsStars;
+  app.star3.onclick = ratingsStars;
+  app.star4.onclick = ratingsStars;
   
   app.pendingEntry = Book;
 })();
