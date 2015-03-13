@@ -6,13 +6,14 @@
  * https://www.debuggex.com/r/zY3mFptK8rBe9xYg
  */
 
+/*
 var app = {
   disallowTitleChars: /^[^<>*$#@|~`+=%\[\]\"\{\}\\\/\^]*$/,
   disallowAuthorChars: /^[^<>!@#$%&*|()+=%\[\]\"\'?,~`\{\}\\\/\^0-9]*$/,
   titleInput: document.getElementById('title'),
   authorInput: document.getElementById('author'),
   yearInput: document.getElementById('publishedYear'),
-  saveBtn: document.getElementById('saveBtn');
+  saveBtn: document.getElementById('saveBtn'),
   star0: document.getElementById('s0'),
   star1: document.getElementById('s1'),
   star2: document.getElementById('s2'),
@@ -22,6 +23,7 @@ var app = {
   rating: null,
   pendingEntry: null
 };
+*/
 
 
 function ratingsStars(event) {
@@ -85,8 +87,14 @@ function validateAll() {
   
 }
 
+var app;
+
 (function init() {
   console.log("init");
+  
+  app = new App();
+  
+  /*
   
   app.titleInput.onchange = validateTitle;
   app.authorInput.onchange = validateAuthor;
@@ -99,5 +107,6 @@ function validateAll() {
   app.star3.onclick = ratingsStars;
   app.star4.onclick = ratingsStars;
   
-  app.pendingEntry = Book;
+  app.pendingEntry = new Book();
+  */
 })();
