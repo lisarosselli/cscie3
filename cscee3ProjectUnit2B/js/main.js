@@ -94,6 +94,11 @@ var app;
   
   app = new App();
   
+  //app.setTitleInput( document.getElementById('title') );
+  //app.setAuthorInput( document.getElementById('author') );
+  //app.setYearInput( document.getElementById('publishedYear') );
+  
+  
   /*
   
   app.titleInput.onchange = validateTitle;

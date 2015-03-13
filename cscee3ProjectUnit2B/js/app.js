@@ -12,6 +12,19 @@ function App() {
   // hold a reference to the book we want to save
   var _pendingEntry;
   
+  // setters
+  
+  var a = {
+    set input(value) {
+      debugger;
+      console.log('setting as '+value);
+    },
+    get input() {
+      debugger;
+      return "got it";
+    }
+  }
+  
   var setTitleInput = function(value) {
     _titleInput = value;
   }
@@ -24,8 +37,21 @@ function App() {
     _yearInput = value;
   }
   
+  // getters
+  var titleInput = function() {
+    return _titleInput;
+  }
+  
+  var authorInput = function() {
+    return _authorInput;
+  }
+  
+  var yearInput = function() {
+    return _yearInput;
+  }
+  
   var saveTitle = function(value) {
-    console.log('saveTitle');
+    console.log('saveTitle'); 
   }
   
   var saveAuthor = function(value) {
@@ -41,13 +67,7 @@ function App() {
   }
   
   return {
-    setTitleInput: setTitleInput,
-    setAuthorInput: setAuthorInput,
-    setYearInput: setYearInput,
-    saveTitle: saveTitle,
-    saveAuthor: saveAuthor,
-    saveYear: saveYear,
-    getPendingEntry: getPendingEntry
+    a: a
   }
 };
 
