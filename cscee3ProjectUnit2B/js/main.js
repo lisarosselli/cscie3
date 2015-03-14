@@ -92,26 +92,25 @@ var app;
 (function init() {
   console.log("init");
   
+  var starsArray = new Array();
+  starsArray = [
+    document.getElementById('s0'),
+    document.getElementById('s1'),
+    document.getElementById('s2'),
+    document.getElementById('s3'),
+    document.getElementById('s4')
+  ]
+  
   app = new App();
   app.view.inputView.title = document.getElementById('title');
   app.view.inputView.author = document.getElementById('author');
   app.view.inputView.year = document.getElementById('publishedYear');
   app.view.inputView.saveBtn = document.getElementById('saveBtn');
-
+  app.view.inputView.stars = starsArray;
   
-  /*
-  
-  app.titleInput.onchange = validateTitle;
-  app.authorInput.onchange = validateAuthor;
-  app.yearInput.onchange = validateYear;
-  app.saveBtn.onclick = validateAll;
-  
-  app.star0.onclick = ratingsStars;
-  app.star1.onclick = ratingsStars;
-  app.star2.onclick = ratingsStars;
-  app.star3.onclick = ratingsStars;
-  app.star4.onclick = ratingsStars;
-  
-  app.pendingEntry = new Book();
-  */
+  app.view.inputView.title.onchange = app.saveTitle;
+  app.view.inputView.author.onchange = app.saveAuthor;
+  app.view.inputView.year.onchange = app.saveYear;
+  app.view.inputView.saveBtn.onclick = app.saveAll;
+  app.setupStarEvents();
 })();

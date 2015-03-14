@@ -1,8 +1,10 @@
 /*
  * View.js
  *
- * Keeping view items separate in this app
+ * Keeping view items separate here
+ *
  * @author L.Rosselli
+ *
  */
 
 function View() {
@@ -37,6 +39,24 @@ function View() {
     },
     get saveBtn() {
       return _saveBtn;
+    },
+    set stars(value) {
+      _stars = (value instanceof Array) ? value : undefined;
+    }, 
+    get stars() {
+      return _stars;
+    },
+    updateStars: function updateStars(rating) {
+      if (_stars) {
+        for (var i = 0; i < _stars.length; i++) {
+          var htmlElement = _stars[i];
+          if (i <= rating) {
+            htmlElement.className = 'fa fa-star';
+          } else {
+            htmlElement.className = 'fa fa-star-o';
+          }
+        }
+      }
     }
   }
   
