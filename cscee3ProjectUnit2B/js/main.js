@@ -93,11 +93,11 @@ var app;
   console.log("init");
   
   app = new App();
-  
-  //app.setTitleInput( document.getElementById('title') );
-  //app.setAuthorInput( document.getElementById('author') );
-  //app.setYearInput( document.getElementById('publishedYear') );
-  
+  app.view.inputView.title = document.getElementById('title');
+  app.view.inputView.author = document.getElementById('author');
+  app.view.inputView.year = document.getElementById('publishedYear');
+  app.view.inputView.saveBtn = document.getElementById('saveBtn');
+
   
   /*
   
