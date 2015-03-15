@@ -1,7 +1,8 @@
 /*
  * View.js
  *
- * Keeping view items separate here
+ * Keeping view items separate here.
+ * Get at them through app.view...
  *
  * @author L.Rosselli
  *
@@ -45,6 +46,14 @@ function View() {
     }, 
     get stars() {
       return _stars;
+    },
+    clearError: function clearError(element) {
+      console.log('clearError');
+      element.className = '';
+    },
+    showError: function showError(element) {
+      console.log('showError');
+      element.className = 'errInput';
     },
     updateStars: function updateStars(rating) {
       if (_stars) {

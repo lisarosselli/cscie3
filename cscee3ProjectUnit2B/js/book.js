@@ -1,8 +1,17 @@
+/*
+ * book.js
+ *
+ * An object to hold entry values
+ *
+ * @author L.Rosselli
+ *
+ */
+
 function Book() {
   var _title;
   var _author;
   var _yearPublished;
-  var _rating;
+  var _rating; // 0-based value
   
   var setProperty = function(property, value) {
     if (typeof property === 'string') {
@@ -26,6 +35,14 @@ function Book() {
     }
   }
   
+  var hasFullRecord = function() {
+    debugger;
+    if (_title && _author && _yearPublished && _rating) {
+      return true;
+    }
+    return false;
+  }
+  
   var getBook = function() {
     var obj = {
       title: _title,
@@ -38,6 +55,7 @@ function Book() {
   
   return {
     setProperty: setProperty,
+    hasFullRecord: hasFullRecord,
     getBook: getBook
   }
 };
