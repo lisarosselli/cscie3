@@ -158,9 +158,9 @@ function loadComposite(original, secondOne, output){
  */
 function blueTint(value, index, array) {
   if (index === 2) {
-    array[index] = value * 2;
+    array[index] = value * 1.5;
   } else if (index === 0 || index === 1) {
-    array[index] = value * 0.2;
+    array[index] = 0;
   }
 }
 

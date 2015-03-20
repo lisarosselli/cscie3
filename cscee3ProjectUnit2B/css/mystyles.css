@@ -16,6 +16,14 @@ h1 {
   width: 42%;
 }
 
+.left {
+	background-color: #dedede;
+}
+
+.right {
+	background-color: #efefef;
+}
+
 .formContent {
   padding-top: 2em;
 }

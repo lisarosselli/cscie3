@@ -23,9 +23,11 @@ var app;
   ]
   
   app = new App();
+  app.retrieveBooks();
   app.view.inputView.title = document.getElementById('title');
   app.view.inputView.author = document.getElementById('author');
   app.view.inputView.year = document.getElementById('publishedYear');
+  app.view.inputView.ratingsContainer = document.getElementById('ratings_container');
   app.view.inputView.saveBtn = document.getElementById('saveBtn');
   app.view.inputView.stars = starsArray;
   

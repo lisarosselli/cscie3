@@ -14,6 +14,7 @@ function View() {
   var _yearInput;
   var _saveBtn;
   var _stars;
+  var _ratingsContainer;
   
   // input view getters and setters
   var inputView = {
@@ -34,6 +35,12 @@ function View() {
     },
     get year() {
       return _yearInput;
+    },
+    set ratingsContainer(value) {
+      _ratingsContainer = (typeof value === 'object') ? value : undefined;
+    },
+    get ratingsContainer() {
+      return _ratingsContainer;
     },
     set saveBtn(value) {
       _saveBtn = (typeof value === 'object') ? value : undefined;

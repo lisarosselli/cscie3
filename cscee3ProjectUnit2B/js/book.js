@@ -36,14 +36,34 @@ function Book() {
   }
   
   var hasFullRecord = function() {
-    debugger;
     if (_title && _author && _yearPublished && _rating) {
       return true;
+    } else {
+      var missingFields = new Array();
+      
+      if (!_title) {
+        missingFields.push('title');
+      }
+      
+      if (!_author) {
+        missingFields.push('author');
+      }
+      
+      if (!_yearPublished) {
+        missingFields.push('year');
+      }
+      
+      if (!_rating) {
+        missingFields.push('rating');
+      }
+      
+      return missingFields;
     }
+    
     return false;
   }
   
-  var getBook = function() {
+  var getInfo = function() {
     var obj = {
       title: _title,
       author: _author,
@@ -56,6 +76,6 @@ function Book() {
   return {
     setProperty: setProperty,
     hasFullRecord: hasFullRecord,
-    getBook: getBook
+    getInfo: getInfo
   }
 };

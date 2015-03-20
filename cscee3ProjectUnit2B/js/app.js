@@ -14,6 +14,7 @@ function App() {
   var _disallowTitleChars = /^[^<>*$#@|~`+=%\[\]\"\{\}\\\/\^]*$/;
   var _disallowAuthorChars = /^[^<>!@#$%&*|()+=%\[\]\"\'?,~`\{\}\\\/\^0-9]*$/;
   var _pendingEntry;
+  
   var view = new View();
 
   // controller-type actions
@@ -59,14 +60,30 @@ function App() {
   }
   
   var saveBook = function(event) {
-    console.log('saveAll');
-    // do we have all that we need?
-    if (getPendingEntry().hasFullRecord()) {
-      console.log('good');
+    // the expected return is an array of missing/invalid DOM elements
+    var entryStatus = getPendingEntry().hasFullRecord();
+
+    if (entryStatus instanceof Array) {
+      var domElementMap = new Map();
+      domElementMap.set('title', view.inputView.title);
+      domElementMap.set('author', view.inputView.author);
+      domElementMap.set('year', view.inputView.year);
+      domElementMap.set('rating', view.inputView.ratingsContainer);
+      
+      for (var i = 0; i < entryStatus.length; i++) {
+        var arrObj = entryStatus[i];
+        var domElement = domElementMap.get(arrObj);
+        domElement.className = 'errInput';
+      }
+     
+    } else if (entryStatus){
+      // is it true here?
+      console.log('complete?');
+      // save it to local storage
+      model.getInstance().addBook(getPendingEntry().getInfo());
     } else {
-      console.log('incomplete');
+      throw Error('entryStatus is of an unexpected value.')
     }
-    // mark those things red
   }
   
   var setupStarEvents = function() {
@@ -79,7 +96,6 @@ function App() {
   }
   
   var starClick = function(event) {
-    debugger;
     var ratingNumber = parseInt(event.target.id.charAt(1));
     view.inputView.updateStars(ratingNumber);
     getPendingEntry().setProperty('rating', ratingNumber);
@@ -92,6 +108,10 @@ function App() {
     return _pendingEntry;
   }
   
+  var retrieveBooks = function() {
+    model.getInstance().getFromLocalStorage();
+  }
+  
   return {
     view: view,
     saveTitle: saveTitle,
@@ -100,6 +120,7 @@ function App() {
     saveBook: saveBook,
     setupStarEvents: setupStarEvents,
     starClick: starClick,
-    getPendingEntry: getPendingEntry
+    getPendingEntry: getPendingEntry,
+    retrieveBooks: retrieveBooks
   }
 };
