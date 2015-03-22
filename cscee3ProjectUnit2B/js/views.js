@@ -2,7 +2,7 @@
  * View.js
  *
  * Keeping view items separate here.
- * Get at them through app.view...
+ * Access them through app.view...
  *
  * @author L.Rosselli
  *
@@ -55,6 +55,16 @@ function View() {
     get stars() {
       return _stars;
     },
+		clearForm: function clearForm() {
+			_titleInput.value = '';
+			_authorInput.value = '';
+			_yearInput.value = '';
+			this.updateStars(-1);
+			_titleInput.className = '';
+			_authorInput.className = '';
+			_yearInput.className = '';
+			_ratingsContainer.className = '';
+		},
     clearError: function clearError(element) {
       element.className = '';
     },

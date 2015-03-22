@@ -72,6 +72,9 @@ function App() {
 					bookObjsArray.length - 1,
 					bookObjsArray
 			);
+			
+			// clear the input form, ready for next user input
+			view.inputView.clearForm();
     } else {
       throw Error('entryStatus is of an unexpected value.')
     }
