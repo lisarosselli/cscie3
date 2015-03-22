@@ -36,11 +36,8 @@ function twelveEvenFibonacciSum(){
     if ((newNum % 2) == 0) {
       acc += newNum;
       numsAdded++;
-      //console.log("adding "+newNum+"  sum "+acc);
     }
   } while(numsAdded < 12);
-
-  //console.log(fibSeq);
 
   return acc;
 }
