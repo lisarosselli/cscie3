@@ -65,11 +65,9 @@ function View() {
       return _stars;
     },
     clearError: function clearError(element) {
-      console.log('clearError');
       element.className = '';
     },
     showError: function showError(element) {
-      console.log('showError');
       element.className = 'errInput';
     },
     updateStars: function updateStars(rating) {

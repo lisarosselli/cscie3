@@ -19,7 +19,6 @@ function App() {
 
   // controller-type actions
   var saveTitle = function(event) {
-    console.log('saveTitle ' + event.target.value); 
     var userInput = event.target.value;
     if (!_disallowTitleChars.test(userInput)) {
       view.inputView.showError(view.inputView.title);
@@ -30,7 +29,6 @@ function App() {
   }
   
   var saveAuthor = function(event) {
-    console.log('saveAuthor ' + event.target.value);
     var userInput = event.target.value;
     if (!_disallowAuthorChars.test(userInput)) {
       view.inputView.showError(view.inputView.author);
@@ -40,9 +38,7 @@ function App() {
     }
   }
   
-  var saveYear = function(event) {
-    console.log('saveYear ' + event.target.value);
-    
+  var saveYear = function(event) { 
     var userInput = parseInt(event.target.value);
     var currentDate = new Date();
     var currentYear = currentDate.getFullYear();

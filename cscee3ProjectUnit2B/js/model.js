@@ -15,15 +15,11 @@ var model = (function() {
 		
 		function addBook(value) {
 			_books.push(value);
-			console.log('model.addBook -->');
-			console.log(_books);
 			pushToLocalStorage();
 		}
 		
 		function pushToLocalStorage() {
-			console.log('pushToLocalStorage');
 			var jsonStr = JSON.stringify(_books);
-			console.log(jsonStr);
 			window.localStorage.setItem(_lsName, jsonStr);
 		}
 		
