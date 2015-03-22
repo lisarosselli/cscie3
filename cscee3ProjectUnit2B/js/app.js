@@ -64,19 +64,15 @@ function App() {
     var entryStatus = getPendingEntry().hasFullRecord();
 
     if (entryStatus instanceof Array) {
-      var domElementMap = new Map();
-      domElementMap.set('title', view.inputView.title);
-      domElementMap.set('author', view.inputView.author);
-      domElementMap.set('year', view.inputView.year);
-      domElementMap.set('rating', view.inputView.ratingsContainer);
-      
       for (var i = 0; i < entryStatus.length; i++) {
-        var arrObj = entryStatus[i];
-        var domElement = domElementMap.get(arrObj);
+				var domElement = view.inputView[entryStatus[i]];
         domElement.className = 'errInput';
       }
-     
-    } else if (entryStatus){
+    } else if (entryStatus) {
+			// all previous red outlines will be cleared by here 
+			// except for the ratings red outline
+			// TODO: remove ratingsContainer red outline here
+			
       model.getInstance().addBook(getPendingEntry().getInfo());
 			var bookObjsArray = model.getInstance().getBooks();
 			view.outputView.addBookToList(

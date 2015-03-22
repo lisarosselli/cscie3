@@ -40,6 +40,9 @@ function Book() {
       return true;
     } else {
       var missingFields = new Array();
+			
+			// the string values pushed into missingFields are in
+			// direct relation to the properties of view.inputView
       
       if (!_title) {
         missingFields.push('title');
@@ -54,7 +57,7 @@ function Book() {
       }
       
       if (!_rating) {
-        missingFields.push('rating');
+        missingFields.push('ratingsContainer');
       }
       
       return missingFields;
