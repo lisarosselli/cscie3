@@ -1,6 +1,8 @@
 /* 
  * model.js
  *
+ * model is implemented as a singleton
+ *
  * @author L.Rosselli
  *
  */

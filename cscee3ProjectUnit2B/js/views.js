@@ -17,15 +17,6 @@ function View() {
   var _ratingsContainer;
 	var _orderedList;
 	
-	
-	/*
-      var domElementMap = new Map();
-      domElementMap.set('title', view.inputView.title);
-      domElementMap.set('author', view.inputView.author);
-      domElementMap.set('year', view.inputView.year);
-      domElementMap.set('rating', view.inputView.ratingsContainer);
-	*/
-  
   // input view getters and setters
   var inputView = {
     set title(value) {
