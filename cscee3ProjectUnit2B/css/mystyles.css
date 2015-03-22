@@ -24,6 +24,23 @@ h1 {
 	background-color: #efefef;
 }
 
+ol {
+	margin-left: 23px;
+	margin-top: 23px;
+}
+
+li {
+	padding: 0.3em;
+}
+
+li .fa {
+	cursor: default;
+}
+
+b {
+	font-weight: 600;
+}
+
 .formContent {
   padding-top: 2em;
 }

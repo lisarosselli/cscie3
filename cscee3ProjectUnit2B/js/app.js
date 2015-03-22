@@ -14,7 +14,7 @@ function App() {
   var _disallowTitleChars = /^[^<>*$#@|~`+=%\[\]\"\{\}\\\/\^]*$/;
   var _disallowAuthorChars = /^[^<>!@#$%&*|()+=%\[\]\"\'?,~`\{\}\\\/\^0-9]*$/;
   var _pendingEntry;
-  
+	
   var view = new View();
 
   // controller-type actions
@@ -77,10 +77,13 @@ function App() {
       }
      
     } else if (entryStatus){
-      // is it true here?
-      console.log('complete?');
-      // save it to local storage
       model.getInstance().addBook(getPendingEntry().getInfo());
+			var bookObjsArray = model.getInstance().getBooks();
+			view.outputView.addBookToList(
+					bookObjsArray[bookObjsArray.length - 1],
+					bookObjsArray.length - 1,
+					bookObjsArray
+			);
     } else {
       throw Error('entryStatus is of an unexpected value.')
     }
@@ -107,10 +110,16 @@ function App() {
     }
     return _pendingEntry;
   }
-  
+	
   var retrieveBooks = function() {
     model.getInstance().getFromLocalStorage();
   }
+	
+	var showBooksRead = function() {
+		retrieveBooks();
+		var bookList = model.getInstance().getBooks();
+		bookList.forEach(view.outputView.addBookToList);
+	}
   
   return {
     view: view,
@@ -121,6 +130,7 @@ function App() {
     setupStarEvents: setupStarEvents,
     starClick: starClick,
     getPendingEntry: getPendingEntry,
-    retrieveBooks: retrieveBooks
+    retrieveBooks: retrieveBooks,
+		showBooksRead: showBooksRead
   }
 };

@@ -15,6 +15,7 @@ function View() {
   var _saveBtn;
   var _stars;
   var _ratingsContainer;
+	var _orderedList;
   
   // input view getters and setters
   var inputView = {
@@ -76,8 +77,32 @@ function View() {
     }
   }
   
+  var outputView = {
+    set orderedList(value) {
+    	_orderedList = (typeof value === 'object') ? value : undefined;
+    },
+		get orderedList() {
+			return _orderedList;
+		},
+		addBookToList: function addBookToList(value, index, array) {
+			var htmlStr = '<li>';
+			htmlStr += '<b>' + value.title + '</b> by ';
+			htmlStr += value.author + ', published in ';
+			htmlStr += value.yearPublished + '. ';
+			
+			for (var i = 0; i < 5; i++) {
+				var starClass = (i <= value.rating) ? 'fa fa-star' : 'fa fa-star-o';
+				htmlStr += '<i class=\'' + starClass +'\'>';
+			}
+			
+			htmlStr += '</li>';
+			_orderedList.innerHTML += htmlStr;
+		}
+  }
+  
   return {
-    inputView: inputView
+    inputView: inputView,
+    outputView: outputView
   }
   
 };

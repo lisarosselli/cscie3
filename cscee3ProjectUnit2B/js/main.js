@@ -23,7 +23,8 @@ var app;
   ]
   
   app = new App();
-  app.retrieveBooks();
+	
+	// set the DOM elements to my view input vars
   app.view.inputView.title = document.getElementById('title');
   app.view.inputView.author = document.getElementById('author');
   app.view.inputView.year = document.getElementById('publishedYear');
@@ -31,9 +32,14 @@ var app;
   app.view.inputView.saveBtn = document.getElementById('saveBtn');
   app.view.inputView.stars = starsArray;
   
+	// set up events for my input elements
   app.view.inputView.title.onchange = app.saveTitle;
   app.view.inputView.author.onchange = app.saveAuthor;
   app.view.inputView.year.onchange = app.saveYear;
   app.view.inputView.saveBtn.onclick = app.saveBook;
   app.setupStarEvents();
+	
+	// show any entries that are in localStorage
+	app.view.outputView.orderedList = document.getElementById('bookList');
+	app.showBooksRead();
 })();

@@ -21,14 +21,12 @@ var model = (function() {
 		
 		function pushToLocalStorage() {
 			console.log('pushToLocalStorage');
-			debugger;
 			var jsonStr = JSON.stringify(books);
 			console.log(jsonStr);
 			window.localStorage.setItem(lsName, jsonStr);
 		}
 		
 		function getFromLocalStorage() {
-			debugger;
 			books = JSON.parse(window.localStorage.getItem(lsName));
 		}
 		
@@ -37,7 +35,7 @@ var model = (function() {
 		}
 		
 		function clearLocalStorage() {
-			window.localStorage.setItem(lsName, '');
+			window.localStorage.clear();
 		}
 		
 		return {
