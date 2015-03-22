@@ -9,29 +9,33 @@ var model = (function() {
 	var instance;
 	
 	function init() {
-		var books = [];
-		var lsName = 'com.lrm.books';
+		console.log("model.init");
+		var _books = new Array();
+		var _lsName = 'com.lrm.books';
 		
 		function addBook(value) {
-			books.push(value);
+			_books.push(value);
 			console.log('model.addBook -->');
-			console.log(books);
+			console.log(_books);
 			pushToLocalStorage();
 		}
 		
 		function pushToLocalStorage() {
 			console.log('pushToLocalStorage');
-			var jsonStr = JSON.stringify(books);
+			var jsonStr = JSON.stringify(_books);
 			console.log(jsonStr);
-			window.localStorage.setItem(lsName, jsonStr);
+			window.localStorage.setItem(_lsName, jsonStr);
 		}
 		
 		function getFromLocalStorage() {
-			books = JSON.parse(window.localStorage.getItem(lsName));
+			_books = JSON.parse(window.localStorage.getItem(_lsName));
+			if (_books == null || _books == undefined) {
+				_books = new Array();
+			}
 		}
 		
 		function getBooks() {
-			return books;
+			return _books;
 		}
 		
 		function clearLocalStorage() {

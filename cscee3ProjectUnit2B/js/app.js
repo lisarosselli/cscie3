@@ -68,11 +68,7 @@ function App() {
 				var domElement = view.inputView[entryStatus[i]];
         domElement.className = 'errInput';
       }
-    } else if (entryStatus) {
-			// all previous red outlines will be cleared by here 
-			// except for the ratings red outline
-			// TODO: remove ratingsContainer red outline here
-			
+    } else if (entryStatus) {	
       model.getInstance().addBook(getPendingEntry().getInfo());
 			var bookObjsArray = model.getInstance().getBooks();
 			view.outputView.addBookToList(
@@ -97,6 +93,7 @@ function App() {
   var starClick = function(event) {
     var ratingNumber = parseInt(event.target.id.charAt(1));
     view.inputView.updateStars(ratingNumber);
+		view.inputView.ratingsContainer.className = '';
     getPendingEntry().setProperty('rating', ratingNumber);
   }
   
@@ -114,7 +111,9 @@ function App() {
 	var showBooksRead = function() {
 		retrieveBooks();
 		var bookList = model.getInstance().getBooks();
-		bookList.forEach(view.outputView.addBookToList);
+		if (bookList) {
+				bookList.forEach(view.outputView.addBookToList);
+		}
 	}
   
   return {
