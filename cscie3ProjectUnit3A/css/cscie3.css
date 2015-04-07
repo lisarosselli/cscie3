@@ -16,6 +16,12 @@ h4 {
 	width: 95%;
 }
 
+/*
+.word:hover {
+    background-color: yellow;
+}
+*/
+
 #transcriptText{
 	padding:1em;
 	border:1px solid #ccc;
