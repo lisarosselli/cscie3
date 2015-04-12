@@ -62,7 +62,9 @@ function doDivideTranscript() {
 	})
 }
 
-var btn = document.getElementById('divideTranscript');
-btn.addEventListener('click', doDivideTranscript);
+window.onload = function() {
+	var btn = document.getElementById('divideTranscript');
+	btn.addEventListener('click', doDivideTranscript);	
+}
 
 
