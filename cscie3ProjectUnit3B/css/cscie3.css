@@ -17,8 +17,16 @@ h4 {
 }
 
 .hint {
-	display:none;
+	display:inline;
 	color:red;
+}
+
+.good {
+	border: 1px solid green;
+}
+
+span {
+	display:none;
 }
 
 .button {
