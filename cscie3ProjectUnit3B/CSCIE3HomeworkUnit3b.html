@@ -97,14 +97,14 @@ The other half was Unit 3 Project: Part B, previously distributed as a ZIP file.
         <br>
         <br>
         <fieldset id="bioInfo"> &nbsp;&nbsp; Brief Bio<br>
-          <textarea wrap="soft" rows="6" cols="40" name="bio" id="bio"></textarea>
-          <div id="charLimit">Limit: 140 characters. You have <span id="charsLeft">140</span>
+          <textarea wrap="soft" rows="6" cols="40" name="bio" id="bio" maxlength=140></textarea>
+          <div id="charLimit">Limit: 140 characters. You have <span class='hint' id="charsLeft">140</span>
             left.</div>
           <div id="selects">
             <div id="select1Div" style="float:left;margin-right:15px;"> Select
               Your &lt;something&gt; <br>
               <select name="firstSelect" id="firstSelect">
-                <option>----</option>
+              
               </select>
             </div>
             <div id="select2Div"> Select Your &lt;somethingElse&gt;
