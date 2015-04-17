@@ -9,6 +9,7 @@ window.onload = function() {
 	initializeNumber1();
 	initializeNumber2();
 	initializeNumber3();
+	initializeNumber5();
 }
 
 
@@ -110,7 +111,9 @@ function initializeNumber3() {
 	hungerGames.books = ['The Hunger Games', 'Catching Fire', 'Mockingjay'];
 	
 	harryPotter.name = 'Harry Potter';
-	harryPotter.books = ['Harry Potter & the Sorcerers Stone', 'Harry Potter & the Chamber of Secrets', 'Harry Potter & the Prizoner of Azkaban'];
+	harryPotter.books = ['Harry Potter & the Sorcerers Stone', 'Harry Potter & the Chamber of Secrets', 'Harry Potter & the Prizoner of Azkaban',
+											'Harry Potter & the Goblet of Fire', 'Harry Potter & the Order of the Phoenix', 'Harry Potter & the Half-Blood Prince',
+											'Harry Potter & the Deathly Hallows'];
 	
 	sel1Opts = [nullHolder, harryPotter, hungerGames];
 	for (var i = 0; i < sel1Opts.length; i++) {
@@ -124,21 +127,17 @@ function initializeNumber3() {
 }
 
 function removeChildren(selectBox) {
-	for (var i = 0; i < selectBox.children.length; i++) {
-		var thisChild = selectBox[i];
-		selectBox.removeChild(thisChild);
+	while (selectBox.childNodes.length > 0) {
+		var thisChildNode = selectBox.childNodes[0];
+		selectBox.removeChild(thisChildNode);
 	}
 }
 
 function onSelect1Change(event) {
-	console.log('hi');
-	
 	removeChildren(selObj.secondSelect);
-	
 	var s = sel1Opts[event.target.selectedIndex];
 	
 	if (s.books != null) {
-		console.log('ok');
 		for (var i = 0; i < s.books.length; i++) {
 			var opt = document.createElement('option');
 			opt.setAttribute('value', i);
@@ -146,11 +145,45 @@ function onSelect1Change(event) {
 			selObj.secondSelect.appendChild(opt);
 		}
 	}
-	
+}
+// end #3 ****************************************
+
+
+/*
+ * #5: Phone number formatting *******************
+ */
+var phoneObj;
+
+function initializeNumber5() {
+	phoneObj = {};
+	phoneObj.phoneField = document.getElementById('phone');
+	phoneObj.phoneField.addEventListener('keyup', onPhoneInput);
 }
 
-
-
-
+function onPhoneInput(event) {
+	var origValue = event.target.value;
+	var copyValue = '';
+	
+	// when you delete/backspace, this fixes the weirdness 
+	// with the dashes
+	if (event.which == 8 || event.keyCode == 8) {
+		if (origValue.charAt(origValue.length-1) == '-') {
+			copyValue = origValue.slice(0, origValue.length-1);
+			event.target.value = copyValue;
+			return;
+		}
+	}
+	
+	for (var i = 0; i < origValue.length; i++) {
+		if (!isNaN(parseInt(origValue[i])) && copyValue.length < 12) {
+			copyValue += origValue[i];
+			if (copyValue.length === 3 || copyValue.length === 7) {
+				copyValue += '-';
+			}
+		}
+	}
+	
+	event.target.value = copyValue;
+}
 
 
