@@ -77,8 +77,8 @@
                   *  in our HTML, and you will not need to use it.)
                   *
                   * */
-                var time =  ''; //YOUR CODE TO ADD #2 - replace the empty quotes with your code
-                console.log(time);       // see if it's working
+                var time =  parseFloat(evt.position); //YOUR CODE TO ADD #2 - replace the empty quotes with your code
+                //console.log(time);       // see if it's working
 
 
                 /*  Next you need to iterate over the transcriptElements (using a 'for' loop or
@@ -109,8 +109,21 @@
 
                 // YOUR for() loop or transcriptElements.each() goes here...
                 // YOUR CODE TO ADD #3
-
-
+								for (var i = 0; i < transcriptElements.length; i++) {
+									var thisElement = transcriptElements[i];
+									
+									//var start = parseFloat(thisElement.dataset.start);
+									//var end = start + parseFloat(thisElement.dataset.dur);
+									
+									var start = parseFloat($(thisElement).attr('data-start'));
+									var end = start + parseFloat($(thisElement).attr('data-dur'));
+									
+									if (time >= start && time <= end) {
+										$(thisElement).addClass('hilite');
+									} else {
+										$(thisElement).removeClass('hilite');
+									}
+								};
         });
 
         /*
@@ -121,12 +134,9 @@
          * And of course we return it, so our plugin is chainable
          * */
         return this.click(function(evt){
-
-                // YOUR CODE TO ADD #4
-                //   Get the value of the data-start attribute (the jQuery .attr() function could help here)
-                //   and call player.seek([your value goes here])
-
-
+					console.log($(evt.currentTarget).attr('data-start'));
+					var seekToThisTime = parseFloat($(evt.currentTarget).attr('data-start'));
+					player.seek(seekToThisTime);
        });
    };
 
